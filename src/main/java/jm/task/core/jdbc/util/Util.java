@@ -33,8 +33,9 @@ public class Util {
         } catch (SQLException e) {}
     }
 
-    private static SessionFactory factory;
+
     public static SessionFactory getFactory() {
+        SessionFactory factory = null;
         if (factory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -60,6 +61,8 @@ public class Util {
         return factory;
     }
 
-
+    static public void closeFactory() {
+        getFactory().close();
+    }
 
 }
